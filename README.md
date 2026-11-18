@@ -27,6 +27,7 @@ Desarrollo de un procesador **Harvard monociclo de 16 bits**, basado en la consi
 - [Paso 6: Logisim Evolution, estructura y prueba manual](docs/06-logisim.md)
 - [Prototipo editable de Logisim (`.circ`)](logisim/cpu16_harvard_prototipo.circ)
 - [Imagen de programa ROM (`.hex`)](rom/programa_busqueda.hex)
+- [Generador reproducible del circuito](tools/build_logisim.py)
 
 ## Código y verificación
 
