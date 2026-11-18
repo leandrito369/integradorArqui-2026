@@ -12,8 +12,8 @@ Desarrollo de un procesador **Harvard monociclo de 16 bits**, basado en la consi
 | 2 | Formatos y códigos de instrucción | Diseñado, pendiente validación con cátedra |
 | 3 | Datapath | Documentado; simulador funcional probado, Logisim pendiente |
 | 4 | ALU y flags | Documentado; 16.972 verificaciones de software correctas, Logisim pendiente |
-| 5 | Unidad de control | **Próximo paso** |
-| 6 | Circuito en Logisim Evolution | Pendiente |
+| 5 | Unidad de control | Documentada; 131.072 combinaciones IR/Z validadas por software |
+| 6 | Circuito en Logisim Evolution | **Próximo paso** |
 | 7 | Programa de búsqueda y pruebas | Pendiente |
 | 8 | Documentación de entrega | Pendiente |
 
@@ -23,6 +23,7 @@ Desarrollo de un procesador **Harvard monociclo de 16 bits**, basado en la consi
 - [Paso 2: formatos de instrucción y codificación](docs/02-formatos-instrucciones.md)
 - [Paso 3: datapath monociclo y rutas de datos](docs/03-datapath.md)
 - [Paso 4: ALU de 16 bits y flags](docs/04-alu-flags.md)
+- [Paso 5: unidad de control combinacional](docs/05-unidad-control.md)
 
 ## Código y verificación
 
@@ -30,11 +31,13 @@ Desarrollo de un procesador **Harvard monociclo de 16 bits**, basado en la consi
 python tests/verificar_codificacion.py
 python tests/verificar_datapath.py
 python tests/verificar_alu.py
+python tests/verificar_control.py
 ```
 
 - `tests/verificar_codificacion.py`: codificación y saltos del programa ilustrativo.
 - `tests/simulador_datapath.py` y `tests/verificar_datapath.py`: modelo funcional del procesador y búsqueda lineal (31 comprobaciones).
 - `tests/alu_16.py` y `tests/verificar_alu.py`: ALU combinacional y pruebas con casos límite/aleatorios (16.972 comprobaciones).
+- `tests/unidad_control.py` y `tests/verificar_control.py`: decodificador combinacional de referencia y tabla exhaustiva de las 65.536 instrucciones por ambos valores de Z (131.072 casos).
 
 Estos programas son **modelos de referencia**, no sustituyen el circuito `.circ` ni su prueba en Logisim.
 
