@@ -129,7 +129,7 @@ Una alternativa es una ROM pequeña como tabla de control por opcode, **pero la 
 
 ## 8. Pruebas de referencia
 
-Se agregan [`tests/unidad_control.py`](../tests/unidad_control.py) y [`tests/verificar_control.py`](../tests/verificar_control.py). El decodificador de referencia recibe IR y Z_reg y devuelve todos los selectores. La suite contrasta las 65.536 palabras de instrucción posibles para ambos valores de Z (131.072 combinaciones), además de invariantes y ejemplos dirigidos.
+Se agregan [`tests/unidad_control.py`](../tests/unidad_control.py) y [`tests/verificar_control.py`](../tests/verificar_control.py). El decodificador de referencia recibe IR y Z_reg y devuelve todos los selectores. La suite contrasta las 65.536 palabras de instrucción posibles para ambos valores de Z (131.072 combinaciones), además de invariantes y ejemplos dirigidos. **Ejecución local correcta (18/11/2026): 131.072 combinaciones contrastadas, de las cuales 39.168 son válidas y 91.904 inválidas; se registraron 16.384 condiciones de salto tomado.** Se comprobaron además casos dirigidos y entradas fuera de rango.
 
 ```bash
 python tests/verificar_control.py
