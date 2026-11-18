@@ -109,7 +109,7 @@ Estas son **expectativas calculadas por el simulador de referencia Python**, no 
 
 ## 6. Cómo regenerar el circuito
 
-El archivo original de generación `build_logisim.py` se conserva en el paquete descargable de esta etapa; **no está incorporado al repositorio en esta revisión**. Requiere Python 3.10+ y bibliotecas estándar, regenera el XML y muestra los valores hexadecimales de ambas ROM. El archivo `.circ` es editable en Logisim Evolution.
+El generador reproducible se encuentra en [`tools/build_logisim.py`](../tools/build_logisim.py) y también en el paquete descargable. Requiere Python 3.10+ y bibliotecas estándar. Regenera el XML y muestra los códigos hexadecimales de ambas ROM. El archivo `.circ` es editable en Logisim Evolution.
 
 ## 7. Referencias
 
