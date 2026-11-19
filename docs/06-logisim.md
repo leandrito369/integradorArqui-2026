@@ -3,7 +3,22 @@
 **Fecha:** 18/11/2026  
 **Archivo:** [`cpu16_harvard_prototipo.circ`](../logisim/cpu16_harvard_prototipo.circ)  
 **Objetivo:** implementación del diseño Harvard monociclo de 16 bits acordado en pasos 1–5.  
-**Estado:** XML y conexiones revisados con herramientas propias; **no ejecutado todavía dentro de Logisim Evolution**. No se afirma funcionamiento eléctrico ni temporal verificado.
+**Estado:** conectividad estructural corregida y revisada (19/11/2026); **no ejecutado todavía dentro de Logisim Evolution**. No se afirma funcionamiento eléctrico ni temporal verificado.
+
+## Corrección de conectividad — 19/11/2026
+
+**Incidencia detectada por el usuario:** al abrir el archivo original, los subcircuitos aparecían aislados. La auditoría descubrió que el generador había creado elementos y túneles sin cables explícitos (solamente dos segmentos de cable en todo el archivo) y que el *custom appearance* de los subcircuitos tenía los puertos desalineados respecto de la ubicación calculada de sus instancias.
+
+**Correcciones realizadas sobre el archivo versionado:**
+- Se agregaron **685 segmentos físicos de cable** entre puertos de componentes y túneles, además de algunos buses visibles entre PC, ROM, IR y CONTROL.
+- Se alinearon las coordenadas del icono de cada subcircuito (puertos y ancla) para que correspondan a los terminales en CPU16.
+- Se evitó conectar accidentalmente entradas próximas (por ejemplo, WA/WE del decodificador y datos/selectores de MUX).
+- Se conectó mediante un cable explícito el cero al clear de las 16 palabras de RAM.
+- Se corrigió `tools/build_logisim.py` para que el proyecto pueda regenerarse con esas conexiones y sin rutas absolutas.
+
+Los **túneles con la misma etiqueta y el mismo ancho** forman una conexión eléctrica dentro de un mismo circuito. Por eso algunos bloques conservan una presentación modular en lugar de una única línea larga de extremo a extremo, aunque ahora las patillas desembocan en cables y túneles. **El chequeo es estructural**: aún se necesita abrir y simular el .circ en Logisim Evolution para certificar el comportamiento en ejecución.
+
+**Recomendación:** cerrar sin guardar la versión vieja y volver a descargar el archivo actualizado desde `logisim/cpu16_harvard_prototipo.circ`. Abrir el circuito principal `CPU16` y luego los subcircuitos.
 
 ## 1. Estructura del proyecto
 
