@@ -3,9 +3,9 @@ from xml.dom import minidom
 from collections import Counter, defaultdict
 from pathlib import Path
 
-O=Path('/mnt/data/logisim_entrega'); O.mkdir(exist_ok=True)
+O=Path(__file__).resolve().parents[1]/'logisim'; O.mkdir(parents=True,exist_ok=True)
 p=ET.Element('project',{'source':'5.0.0','version':'1.0'})
-p.text='\n  Diseño académico Harvard monociclo de 16 bits, prototipo pendiente de simulación en GUI.\n'
+p.text='\n  Prototipo Harvard 16 bits: conexiones explicitas mediante cables y tuneles.\n'
 for i,desc in enumerate(['#Wiring','#Gates','#Plexers','#Arithmetic','#FPArithmetic','#Memory','#I/O','#Base']): ET.SubElement(p,'lib',{'name':str(i),'desc':desc})
 ET.SubElement(p,'main',{'name':'CPU16'})
 opts=ET.SubElement(p,'options')
@@ -36,11 +36,11 @@ class Circuit:
    ET.SubElement(a,'text',{'font-family':'SansSerif','font-size':'12','font-weight':'bold','text-anchor':'middle','x':'140','y':'53'}).text=name
    for i,(s,w) in enumerate(self.inputs):
     y=60+i*20
-    ET.SubElement(a,'circ-port',{'height':'8','pin':f'80,{80+i*50}','width':'8','x':'46','y':str(y-4)})
+    ET.SubElement(a,'circ-port',{'height':'8','pin':f'80,{80+i*50}','width':'8','x':'50','y':str(y)})
    for i,(s,w) in enumerate(self.outputs):
     y=60+i*20
-    ET.SubElement(a,'circ-port',{'height':'10','pin':f'1400,{80+i*50}','width':'10','x':'225','y':str(y-5)})
-   ET.SubElement(a,'circ-anchor',{'facing':'east','height':'6','width':'6','x':'227','y':'57'})
+    ET.SubElement(a,'circ-port',{'height':'10','pin':f'1400,{80+i*50}','width':'10','x':'230','y':str(y)})
+   ET.SubElement(a,'circ-anchor',{'facing':'east','height':'6','width':'6','x':'230','y':'60'})
  def c(self,lib,name,x,y,**kw):
   o=ET.SubElement(self.el,'comp',{'lib':str(lib),'loc':xy(x,y),'name':name})
   for key,value in kw.items():
@@ -49,7 +49,22 @@ class Circuit:
   self.components.append((lib,name,x,y,kw))
   return o
  def t(self,name,w,x,y,facing='east'):
-  return self.c(0,'Tunnel',x,y,label=name,width=w,facing=facing)
+  # Túneles con conexión física de cable al puerto del componente.
+  # Excepciones en terminales contiguos: evitar unir accidentalmente
+  # un bus de selección con su enable o dos señales independientes.
+  sin_tramo = {
+    ('REGS12','WA',360,250),
+    ('RAM16_ASYNC','Alo',760,320),
+    ('RAM16_ASYNC','M0',1170,280),
+    ('RAM16_ASYNC','M1',1170,290),
+    ('CONTROL','NIB',1160,430),
+    ('CONTROL','RS_VALID',1310,320),
+  }
+  if (self.name,name,x,y) in sin_tramo:
+   return self.c(0,'Tunnel',x,y,label=name,width=w,facing=facing)
+  dx = -20 if facing == 'east' else 20
+  self.wire(x,y,x+dx,y)
+  return self.c(0,'Tunnel',x+dx,y,label=name,width=w,facing=facing)
  def pin(self,name,w,x,y,output):
   self.c(0,'Pin',x,y,label=name,width=w,**({'output':'true','facing':'west'} if output else {'facing':'east'}))
   self.t(name,w,x,y,'west' if not output else 'east')
@@ -180,7 +195,7 @@ for idx in range(16):
  ram.c(5,'Register',1000,ry,width=16,label=f'M{idx}')
  ram.t('DIN',16,1000,ry+30);ram.t(f'wen{idx}',1,1000,ry+50)
  ram.t('CLK',1,1000,ry+70)
- ram.const(0,1,1030,ry+90)  # RAM persists across reset (no clear)
+ ram.const(0,1,1080,ry+90); ram.wire(1030,ry+90,1080,ry+90)  # RAM persiste tras reset
  ram.t(f'M{idx}',16,1060,ry+30,'west')
 ram.split('Alo',4,[('A0',2),('A1',2)],1110,300)
 for grp in range(4):
@@ -317,6 +332,14 @@ cpu.const(0,1,1410,1590);cpu.t('ZERO1',1,1410,1590,'west')
 cpu.add('PC','ONE16','ZERO1','PC_SEQ','PC_C1',16,1790,1540)
 cpu.add('PC','OFF16','ZERO1','PC_BR','PC_C2',16,1790,1690)
 cpu.mux('NEXT_PC',['PC_SEQ','PC_BR'],'BranchTaken',16,2040,1620)
+# Troncales visibles de conexión principal: PC -> ROM -> IR -> CONTROL.
+cpu.wire(400,650,440,650)
+cpu.wire(440,650,440,570)
+cpu.wire(440,570,560,570)
+cpu.wire(840,620,960,620)
+cpu.wire(960,620,1100,620)
+cpu.wire(1100,620,1100,140)
+cpu.wire(1100,140,1300,140)
 
 # Simple static consistency checks.
 for c in [x for x in p if x.tag=='circuit']:
