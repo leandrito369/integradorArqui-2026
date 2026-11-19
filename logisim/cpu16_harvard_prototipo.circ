@@ -2446,7 +2446,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,190)" name="Constant">
+    <wire from="(1030,190)" to="(1080,190)"/>
+    <comp lib="0" loc="(1080,190)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2484,7 +2485,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,310)" name="Constant">
+    <wire from="(1030,310)" to="(1080,310)"/>
+    <comp lib="0" loc="(1080,310)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2522,7 +2524,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,430)" name="Constant">
+    <wire from="(1030,430)" to="(1080,430)"/>
+    <comp lib="0" loc="(1080,430)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2560,7 +2563,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,550)" name="Constant">
+    <wire from="(1030,550)" to="(1080,550)"/>
+    <comp lib="0" loc="(1080,550)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2598,7 +2602,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,670)" name="Constant">
+    <wire from="(1030,670)" to="(1080,670)"/>
+    <comp lib="0" loc="(1080,670)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2636,7 +2641,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,790)" name="Constant">
+    <wire from="(1030,790)" to="(1080,790)"/>
+    <comp lib="0" loc="(1080,790)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2674,7 +2680,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,910)" name="Constant">
+    <wire from="(1030,910)" to="(1080,910)"/>
+    <comp lib="0" loc="(1080,910)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2712,7 +2719,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1030)" name="Constant">
+    <wire from="(1030,1030)" to="(1080,1030)"/>
+    <comp lib="0" loc="(1080,1030)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2750,7 +2758,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1150)" name="Constant">
+    <wire from="(1030,1150)" to="(1080,1150)"/>
+    <comp lib="0" loc="(1080,1150)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2788,7 +2797,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1270)" name="Constant">
+    <wire from="(1030,1270)" to="(1080,1270)"/>
+    <comp lib="0" loc="(1080,1270)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2826,7 +2836,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1390)" name="Constant">
+    <wire from="(1030,1390)" to="(1080,1390)"/>
+    <comp lib="0" loc="(1080,1390)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2864,7 +2875,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1510)" name="Constant">
+    <wire from="(1030,1510)" to="(1080,1510)"/>
+    <comp lib="0" loc="(1080,1510)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2902,7 +2914,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1630)" name="Constant">
+    <wire from="(1030,1630)" to="(1080,1630)"/>
+    <comp lib="0" loc="(1080,1630)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2940,7 +2953,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1750)" name="Constant">
+    <wire from="(1030,1750)" to="(1080,1750)"/>
+    <comp lib="0" loc="(1080,1750)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -2978,7 +2992,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1870)" name="Constant">
+    <wire from="(1030,1870)" to="(1080,1870)"/>
+    <comp lib="0" loc="(1080,1870)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
@@ -3016,7 +3031,8 @@
       <a name="width" val="1"/>
       <a name="facing" val="east"/>
     </comp>
-    <comp lib="0" loc="(1030,1990)" name="Constant">
+    <wire from="(1030,1990)" to="(1080,1990)"/>
+    <comp lib="0" loc="(1080,1990)" name="Constant">
       <a name="width" val="1"/>
       <a name="value" val="0x0"/>
     </comp>
